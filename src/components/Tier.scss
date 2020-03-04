@@ -1,0 +1,62 @@
+.Tier {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding: 50px 100px;
+  border-bottom: 1px solid #ccc;
+
+  &__title {
+    margin: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 15px;
+  }
+
+  &__header {
+    font-weight: 700; 
+  }
+
+  &__cell {
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+  }
+
+  &__button {
+    padding: 10px 20px;
+    box-shadow: none;
+    border: 1px solid #00559c;
+    background: white;
+    color: #00559c;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: center;
+
+    &:hover {
+      color: #2993ea;
+      border-color: #2993ea;
+    }
+  }
+
+  &__success {
+    background-color: #ccc;
+    font-weight: 700; 
+    border-radius: 4px;
+
+    &--true {
+      background-color: #32b496;
+      color: white;
+    }
+
+    &--false {
+      display: flex;
+      flex-direction: column;
+      background-color: red;
+      color: white;
+    }
+  }
+}
