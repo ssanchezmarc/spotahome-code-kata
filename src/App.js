@@ -3,7 +3,7 @@ import "./styles.css";
 
 import Tier from "./components/Tier";
 import { KataProvider } from "./KataContext";
-import kata from "./kata/toRoman";
+import kata from "./kata/toRoman_OO";
 
 const TIER_LEVELS = {
   1: [
