@@ -1,64 +1,56 @@
+const conversions = {
+  1: 'I',
+  5: 'V',
+  10: 'X',
+  50: 'L',
+  100: 'C',
+  500: 'D',
+  1000: 'M'
+};
+
+const applyTransformation = (number, base) => {
+  if ((4 * base) > number) {
+    return `${conversions[base]}${toRoman(number - base)}`;
+  }
+
+  if ((5 * base) > number) {
+    return `${conversions[base]}${conversions[(5 * base)]}${toRoman(number - (4 * base))}`;
+  }
+
+  if ((9 * base) > number) {
+    return `${conversions[(5 * base)]}${toRoman(number - (5 * base))}`;
+  }
+
+  if ((10 * base) > number) {
+    return `${conversions[base]}${conversions[(10 * base)]}${toRoman(number - (9 * base))}`;
+  }
+};
+
+
 const toRoman = n => {
-  // Basic case
-  if (n === 0) {
+  // Break case
+  if (0 === n) {
     return '';
   }
 
-  // Unit
-  if (n >= 1 && n <= 3) {
-    return `I${toRoman(n - 1)}`;
+  // Units from 1 to 9
+  if (10 > n) {
+    return applyTransformation(n, 1);
   }
 
-  if (4 === n) {
-    return 'IV';
+  // Tens from 10 to 99
+  if (100 > n) {
+    return applyTransformation(n, 10);
   }
 
-  if (n >= 5 && n < 9) {
-    return `V${toRoman(n - 5)}`;
+  // Hundred from 100 to 999
+  if (1000 > n) {
+    return applyTransformation(n, 100);
   }
 
-  if (9 === n) {
-    return 'IX';
-  }
-
-  // tens
-  if (n >= 10 && n <= 39) {
-    return `X${toRoman(n - 10)}`;
-  }
-
-  if (n >= 40 && n <= 49) {
-    return `XL${toRoman(n - 40)}`;
-  }
-
-  if (n >= 50 && n <= 89) {
-    return `L${toRoman(n - 50)}`;
-  }
-
-  if (n >= 90 && n <= 99) {
-    return `XC${toRoman(n - 90)}`;
-  }
-
-
-  // hundred
-  if (n >= 100 && n < 399) {
-    return `C${toRoman(n - 100)}`;
-  }
-
-  if (n >= 400 && n <= 499) {
-    return `CD${toRoman(n - 400)}`;
-  }
-
-  if (n >= 500 && n <= 899) {
-    return `D${toRoman(n - 500)}`;
-  }
-
-  if (n >= 900 && n <= 999) {
-    return `CM${toRoman(n - 900)}`;
-  }
-
-  // thousands
-  if (n >= 1000 && n < 3999) {
-    return `M${toRoman(n - 1000)}`;
+  // Thousands from 1000 to 3999
+  if (4000 > n) {
+    return applyTransformation(n, 1000);
   }
 };
 
